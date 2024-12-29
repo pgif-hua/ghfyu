@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跑路网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 100%;
+            padding: 40px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            padding: 14px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="infoForm" style="display: block;">
+        <h2>个人信息</h2>
+        <input type="text" id="infoInput" placeholder="请输入个人信息" onkeypress="if(event.keyCode == 13) submitInfo()">
+        <button onclick="submitInfo()">个人信息</button>
+        <button onclick="showRegisterForm()">切换到注册</button>
+    </div>
+
+    <div class="container" id="registerForm" style="display: none;">
+        <h2>注册</h2>
+        <input type="text" id="username" placeholder="用户名" required>
+        <input type="email" id="email" placeholder="电子邮件" required>
+        <input type="password" id="password" placeholder="密码" required>
+        <input type="password" id="confirmPassword" placeholder="确认密码" required>
+        <button type="submit" onclick="register()">注册</button>
+        <button onclick="showInfoForm()">切换到个人信息</button>
+    </div>
+
+    <div class="footer">
+        <a href="https://shequ.codemao.cn/user/445656140" target="_blank">我的个人主页</a>
+        <br>
+        <a href="https://shequ.codemao.cn/work/250802394" target="_blank">Windows12</a>
+        <br>
+        <a href="https://shequ.codemao.cn/work/250936313" target="_blank">Windows12</a>
+        <br>
+        <a href="https://shequ.codemao.cn/work/2506677023" target="_blank">留言板</a>
+        <br>
+        <a href="https://shequ.codemao.cn/work/244987536 "target=_blank">Mode社区</a>
+    </div>
+
+    <script>
+        function showRegisterForm() {
+            document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('infoForm').style.display = 'none';
+        }
+
+        function showInfoForm() {
+            document.getElementById('infoForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        }
+
+        function submitInfo() {
+            var info = document.getElementById('infoInput').value;
+            if (info.trim() === '') {
+                alert('请输入个人信息！');
+            } else {
+                alert('提交的个人信息: ' + info);
+            }
+        }
+
+        function register() {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('密码不匹配！');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('密码长度至少为6个字符！');
+                return;
+            }
+
+            alert('注册成功！');
+        }
+    </script>
+</body>
+</html>
